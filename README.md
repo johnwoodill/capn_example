@@ -1,2 +1,2 @@
-[](http://johnwoodill.github.io/capn_example/1-capn_example.pdf).
+[](https://github.com/johnwoodill/capn_example/blob/master/1-capn_example.pdf).
 
