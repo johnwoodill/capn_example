@@ -74,8 +74,10 @@ for(j in 1:NumNodes){
   simuData[j, 5] <- profit(nodes[j], gw.data)           # profit
 }
 
+
 ### Recover approximating coefficents
 pC <- paprox(Aspace, simuData[, 1], simuData[, 2], simuData[, 3], simuData[, 4])  #the approximated coefficent vector for prices
+pC
 
 ### Project shadow prices, value function, and inclusive wealth
 waterSim <- psim(pcoeff = pC,
@@ -121,3 +123,12 @@ testme <- psim(pcoeff = pC,
                sdot = c(sdot(18.5, recharge, gw.data), sdot(21.5, recharge, gw.data)))
 print(testme)
 testme
+
+
+
+
+
+
+
+
+
