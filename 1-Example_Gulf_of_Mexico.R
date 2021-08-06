@@ -75,6 +75,7 @@ dsdotdss <- function(s, Z){
     (Z$gamma * Z$alpha + 1) * Z$gamma * Z$alpha * Z$q * (Z$y ^ Z$alpha) * (s ^ ((Z$gamma * Z$alpha - 1)))
 }
 
+
 ## shadow prices
 # prepare capN
 Aspace <- aproxdef(param$order, 
@@ -112,19 +113,25 @@ pC <- paprox(Aspace,
              simuDataP[,3],
              simuDataP[,4])  #the approximated coefficent vector for prices
 
-pdotC <- pdotaprox(Aspace,simuDataPdot[,1],
+pdotC <- pdotaprox(Aspace,
+                   simuDataPdot[,1],
                    simuDataPdot[,2],
                    simuDataPdot[,3],
                    simuDataPdot[,4],
                    simuDataPdot[,5],
                    simuDataPdot[,6])
 
+sum(pdotC$coefficient)
+
 # project shadow prices and wealth
 GOMSimV <- vsim(vC, 
                 as.matrix(simuDataV[,1], ncol=1), 
                 profit(nodes,param))
 
-GOMSimP <- psim(pC,simuDataP[,1],
+sum(GOMSimV$shadowp)
+
+GOMSimP <- psim(pC,
+                simuDataP[,1],
                 profit(nodes,param),
                 simuDataP[,2]) 
 
@@ -134,6 +141,9 @@ GOMSimPdot <- pdotsim(pdotC,
                       simuDataPdot[,3],
                       profit(nodes,param),
                       simuDataPdot[,5])
+
+
+sum(GOMSimPdot$shadowp)
 
 
 # Three price curves
